@@ -1,13 +1,17 @@
 # stub-promise
 A tiny test utility that lets you stub promises and manage their control flow
 
+It can be used to stub functions that return promises, for instance a "http" object that has a get() function which is implemented using a promise.
+
+stubPromise() returns an actual promise, but in addition it adds resolve() and reject() to the method it stubs, so that you can manage the control flow in your tests. For instance, http.get.resolve({data: 42:}) will resolve a http.get(http://whatever).
+
 ## npm package
 
 ```
 npm install stub-promise --save-dev
 ```
 
-## Documentation
+## Usage
 
 ```
 var expect = require('expectations');
