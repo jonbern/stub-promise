@@ -1,6 +1,6 @@
 {
   "name": "stub-promise",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A test utility that lets you stub and control promises for testing purposes",
   "repository": "https://github.com/jonbern/stub-promise.git",
   "main": "index.js",
