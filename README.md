@@ -3,13 +3,59 @@ A tiny test utility that lets you stub functions that return promises and manage
 
 ## npm package
 
-```
+```javascript
 npm install stub-promise --save-dev
+```
+
+## Example
+
+```javascript
+var stubPromise = require('stub-promise');
+
+// code under test
+function getUsers() {
+  http.get('/users.html').then(function(response) {
+      console.log(response.data);
+    });
+};
+
+// test code
+describe('#getUsers()', function() {
+
+  beforeEach(function() {
+    http.get = stubPromise();
+    sinon.spy(console, 'log');
+  });
+
+  beforeEach(function() {
+    getUsers();
+  });
+
+  describe('when getUsers resolves', function() {
+
+    beforeEach(function() {
+      var response = {
+        data: 'foo'
+      }
+      http.get.resolve(response);
+    });
+
+    describe('when resolved', function() {
+
+      it('logs response.data to console', function() {
+        expect(console.log.getCall(0).args[0]).toBe('foo');
+      });
+
+    });
+
+  });
+
+});
 ```
 
 ## Documentation
 
-```
+```javascript
 var expect = require('expectations');
 var sinon = require('sinon');
 var stubPromise = require('stub-promise');
