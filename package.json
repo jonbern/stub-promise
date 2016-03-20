@@ -1,0 +1,27 @@
+{
+  "name": "stub-promise",
+  "version": "0.0.1",
+  "description": "A test utility that lets you stub and control promises for testing purposes",
+  "repository": "https://github.com/jonbern/stub-promise.git",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests.js"
+  },
+  "keywords": [
+    "promise",
+    "test",
+    "unit-testing",
+    "mock",
+    "fake"
+  ],
+  "author": "Jon K. Bernhardsen",
+  "license": "MIT",
+  "dependencies": {
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "expectations": "^0.5.2",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
+  }
+}
