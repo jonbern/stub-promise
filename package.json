@@ -1,8 +1,8 @@
 {
-  "name": "stub-promise",
+  "name": "stub-promise-function",
   "version": "1.0.2",
   "description": "A test utility that lets you stub and control promises for testing purposes",
-  "repository": "https://github.com/jonbern/stub-promise.git",
+  "repository": "https://github.com/jonbern/stub-promise-function.git",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests.js"
