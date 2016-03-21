@@ -1,16 +1,16 @@
-# stub-promise
+# stub-promise-function
 A tiny test utility that lets you stub functions that return promises and manage the control flow of the returned promise.
 
 ## npm package
 
 ```javascript
-npm install stub-promise --save-dev
+npm install stub-promise-function --save-dev
 ```
 
 ## Example
 
 ```javascript
-var stubPromise = require('stub-promise');
+var stubPromiseFunction = require('stub-promise-function');
 
 // code under test
 function getUsers() {
@@ -23,7 +23,7 @@ function getUsers() {
 describe('#getUsers()', function() {
 
   beforeEach(function() {
-    http.get = stubPromise();
+    http.get = stubPromiseFunction();
     sinon.spy(console, 'log');
   });
 
@@ -58,16 +58,16 @@ describe('#getUsers()', function() {
 ```javascript
 var expect = require('expectations');
 var sinon = require('sinon');
-var stubPromise = require('stub-promise');
+var stubPromiseFunction = require('stub-promise-function');
 
-describe('stubPromise', function() {
+describe('stubPromiseFunction', function() {
 
   var http;
   var promise;
 
   beforeEach(function() {
     http = {
-      get: stubPromise()
+      get: stubPromiseFunction()
     };
   });
 
@@ -149,7 +149,7 @@ describe('stubPromise', function() {
 
     beforeEach(function() {
       http = {
-        get: stubPromise()
+        get: stubPromiseFunction()
       };
 
       promise = http.get('http://whatever');
@@ -165,7 +165,7 @@ describe('stubPromise', function() {
     });
 
     it('can be reinstantiated and then resolved', function() {
-      http.get = stubPromise();
+      http.get = stubPromiseFunction();
 
       promise = http.get('http://another');
 
