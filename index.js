@@ -1,12 +1,15 @@
 'use strict';
 var Q = require('q');
+var sinon = require('sinon');
 
 module.exports = function() {
   var deferred = Q.defer();
 
-  var func = function() {
-    return deferred.promise;
-  };
+  // var func = function() {
+  //   return deferred.promise;
+  // };
+
+  var func = sinon.stub().returns(deferred.promise);
 
   func.resolve = function(value) {
     deferred.resolve(value);
