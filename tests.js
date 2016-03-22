@@ -3,7 +3,7 @@ var expect = require('expectations');
 var sinon = require('sinon');
 var stubPromise = require('./index');
 
-describe('stubPromise', function() {
+describe('#stubPromiseFunction()', function() {
 
   var http;
   var promise;

@@ -56,18 +56,14 @@ describe('#getUsers()', function() {
 ## Documentation
 
 ```javascript
-var expect = require('expectations');
-var sinon = require('sinon');
-var stubPromiseFunction = require('stub-promise-function');
-
-describe('stubPromiseFunction', function() {
+describe('#stubPromiseFunction()', function() {
 
   var http;
   var promise;
 
   beforeEach(function() {
     http = {
-      get: stubPromiseFunction()
+      get: stubPromise()
     };
   });
 
@@ -125,11 +121,7 @@ describe('stubPromiseFunction', function() {
 
   });
 
-  describe('test spy example', function() {
-
-    beforeEach(function() {
-      sinon.spy(http, 'get');
-    });
+  describe('spy functionality (using sinon.spy internally)', function() {
 
     beforeEach(function simulateApi() {
       http.get('http://whatever');
@@ -142,14 +134,14 @@ describe('stubPromiseFunction', function() {
 
   });
 
-  describe('multiple invocation by re-instantiation example', function() {
+  describe('multiple invocation by re-instantiation', function() {
 
     var http;
     var promise;
 
     beforeEach(function() {
       http = {
-        get: stubPromiseFunction()
+        get: stubPromise()
       };
 
       promise = http.get('http://whatever');
@@ -165,7 +157,7 @@ describe('stubPromiseFunction', function() {
     });
 
     it('can be reinstantiated and then resolved', function() {
-      http.get = stubPromiseFunction();
+      http.get = stubPromise();
 
       promise = http.get('http://another');
 
