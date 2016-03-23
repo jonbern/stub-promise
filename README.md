@@ -31,6 +31,11 @@ describe('#getUsers()', function() {
     getUsers();
   });
 
+  it('uses http to get users', () => {
+    expect(http.get.called).toBe(true);
+    expect(http.get.getCall(0).args[0]).toBe('/users.html');
+  });
+
   describe('when getUsers resolves', function() {
 
     beforeEach(function() {
@@ -63,7 +68,7 @@ describe('#stubPromiseFunction()', function() {
 
   beforeEach(function() {
     http = {
-      get: stubPromise()
+      get: stubPromiseFunction()
     };
   });
 
@@ -141,7 +146,7 @@ describe('#stubPromiseFunction()', function() {
 
     beforeEach(function() {
       http = {
-        get: stubPromise()
+        get: stubPromiseFunction()
       };
 
       promise = http.get('http://whatever');
@@ -157,7 +162,7 @@ describe('#stubPromiseFunction()', function() {
     });
 
     it('can be reinstantiated and then resolved', function() {
-      http.get = stubPromise();
+      http.get = stubPromiseFunction();
 
       promise = http.get('http://another');
 
