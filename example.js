@@ -1,23 +1,14 @@
-# stub-promise-function
-A test utility for stubbing functions that return promises.
+var expect = require('expectations');
+var sinon = require('sinon');
+var stubPromiseFunction = require('./');
 
-The promises' control flow can be controlled on the outside of the code under test, in in your test suite, by calling the exposed resolve() and reject() functions.
+var http = {
+  get: function() {
+    // simulates a http module with a GET function
+  }
+};
+var someFunction = function() {};
 
-```
-
-## npm package
-
-```javascript
-npm install stub-promise-function --save-dev
-```
-
-## Example
-
-```javascript
-var stubPromiseFunction = require('stub-promise-function');
-```
-
-```javascript
 // code under test
 function getUsers() {
   http.get('/users.html').then(function(response) {
@@ -108,4 +99,3 @@ describe('multiple calls', function() {
   });
 
 });
-```

@@ -3,17 +3,29 @@ var Q = require('q');
 var sinon = require('sinon');
 
 module.exports = function() {
-  var deferred = Q.defer();
+  var calls = [];
 
-  var func = sinon.stub().returns(deferred.promise);
+  var func = function() {
+    var deferred = Q.defer();
+    calls.push(deferred);
+    return deferred.promise;
+  };
 
   func.resolve = function(value) {
-    deferred.resolve(value);
-  }
+    if (calls.length > 0) {
+      calls.shift().resolve(value);
+    } else {
+      throw 'Resolve cannot be called when there are no more promises to resolve/reject';
+    }
+  };
 
   func.reject = function(reason) {
-    deferred.reject(reason);
-  }
+    if (calls.length > 0) {
+      calls.shift().reject(reason);
+    } else {
+      throw 'Reject cannot be called when there are no more promises to resolve/reject';
+    }
+  };
 
-  return func;
+  return sinon.spy(func);
 }
