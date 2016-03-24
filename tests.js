@@ -46,7 +46,6 @@ describe('#stubPromiseFunction()', function() {
           done();
         });
 
-        //console.log('http.get.resolve: ', http.get.resolve);
         http.get.resolve(expectedResponse);
       });
 
