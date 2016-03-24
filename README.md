@@ -1,9 +1,5 @@
 # stub-promise-function
-A test utility for stubbing functions that return promises.
-
-The promises' control flow can be controlled on the outside of the code under test, in in your test suite, by calling the exposed resolve() and reject() functions.
-
-```
+A test utility for stubbing functions that return promises. The promises' control flow can be controlled on the outside of the code under test, in in your test suite, by calling the exposed resolve() and reject() functions.
 
 ## npm package
 
