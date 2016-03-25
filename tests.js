@@ -164,11 +164,9 @@ describe('#stubPromiseFunction()', function() {
         });
 
         it('it throws an error', function() {
-          try {
+          expect(function() {
             http.get.resolve('fourth, will cause an error');
-          } catch (e) {
-            expect(e).toEqual('Resolve cannot be called when there are no more promises to resolve/reject');
-          }
+          }).toThrow(new Error('Resolve cannot be called when there are no more promises to resolve/reject'));
         });
 
       });
@@ -182,11 +180,9 @@ describe('#stubPromiseFunction()', function() {
         });
 
         it('it throws an error', function() {
-          try {
+          expect(function() {
             http.get.reject('fourth, will cause an error');
-          } catch (e) {
-            expect(e).toEqual('Reject cannot be called when there are no more promises to resolve/reject');
-          }
+          }).toThrow(new Error('Reject cannot be called when there are no more promises to resolve/reject'))
         });
 
       });

@@ -15,7 +15,7 @@ module.exports = function() {
     if (calls.length > 0) {
       calls.shift().resolve(value);
     } else {
-      throw 'Resolve cannot be called when there are no more promises to resolve/reject';
+      throw new Error('Resolve cannot be called when there are no more promises to resolve/reject');
     }
   };
 
@@ -23,7 +23,7 @@ module.exports = function() {
     if (calls.length > 0) {
       calls.shift().reject(reason);
     } else {
-      throw 'Reject cannot be called when there are no more promises to resolve/reject';
+      throw new Error('Reject cannot be called when there are no more promises to resolve/reject');
     }
   };
 
